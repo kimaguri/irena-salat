@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/categories.css">
+    <link rel="stylesheet" href="css/loader.css">
 </head>
 <body>
 <div class="header">
@@ -17,8 +18,9 @@
     </div>
 </div>
 
-<!-- Контейнер для динамического контента -->
-<div id="price-content"></div>
+<div id="price-content">
+    <!-- Здесь будет лоадер и данные -->
+</div>
 
 <div class="contact">
     <h3>Для заказа звоните:</h3>
@@ -26,11 +28,6 @@
     <p>Ирэна</p>
 </div>
 
-<!-- Подключение Google Sheets API -->
-<script src="https://apis.google.com/js/api.js"></script>
-
-<!-- Подключение нашего скрипта -->
 <script src="js/updatePrices.js"></script>
-
 </body>
 </html>
