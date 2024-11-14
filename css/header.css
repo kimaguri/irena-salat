@@ -1,0 +1,36 @@
+.header {
+    text-align: center;
+    padding: 15px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.header-contact {
+    font-size: 1.1rem;
+    margin-top: 8px;
+}
+
+.header-phone {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    margin: 5px 0;
+}
+
+@media (min-width: 768px) {
+    .header {
+        padding: 20px;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+}

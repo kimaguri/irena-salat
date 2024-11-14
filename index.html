@@ -4,374 +4,247 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Прайс-лист салатов - Ирэна</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 15px;
-            background-color: #f5f5f5;
-        }
-
-        .header {
-            text-align: center;
-            padding: 20px;
-            background-color: #4CAF50;
-            color: white;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        .header-contact {
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-
-        .header-phone {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .category {
-            background-color: white;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .category-title {
-            color: #4CAF50;
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-
-        .price-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 2px solid #4CAF50;
-            font-weight: bold;
-        }
-
-        .header-name {
-            flex: 2;
-        }
-
-        .header-wholesale {
-            flex: 1;
-            text-align: right;
-            color: #666;
-        }
-
-        .header-retail {
-            flex: 1;
-            text-align: right;
-            color: #333;
-        }
-
-        .price-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .item-name {
-            flex: 2;
-        }
-
-        .price-wholesale {
-            flex: 1;
-            text-align: right;
-            color: #666;
-        }
-
-        .price-retail {
-            flex: 1;
-            text-align: right;
-            color: #333;
-            font-weight: bold;
-        }
-
-        .contact {
-            text-align: center;
-            padding: 20px;
-            background-color: #f8f8f8;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-
-        .phone {
-            color: #4CAF50;
-            font-size: 1.2em;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        @media (max-width: 600px) {
-            .price-header {
-                flex-wrap: wrap;
-            }
-            
-            .header-name {
-                flex: 100%;
-                margin-bottom: 5px;
-            }
-
-            .header-wholesale, .header-retail {
-                flex: 1;
-            }
-
-            .price-item {
-                flex-wrap: wrap;
-            }
-            
-            .item-name {
-                flex: 100%;
-                margin-bottom: 5px;
-            }
-
-            .price-wholesale, .price-retail {
-                flex: 1;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/categories.css">
 </head>
 <body>
-    <div class="header">
-        <h1>🥗 Прайс-лист салатов</h1>
-        <div class="header-contact">
-            <a href="tel:+79296175008" class="header-phone">+7 929 617-50-08</a>
-            <div>Ирэна</div>
-        </div>
+<div class="header">
+    <h1>🥗 Прайс-лист салатов</h1>
+    <div class="header-contact">
+        <a href="tel:+79296175008" class="header-phone">+7 929 617-50-08</a>
+        <div>Ирэна</div>
     </div>
+</div>
 
-    <div class="category">
-        <h2 class="category-title">Салаты</h2>
-        <div class="price-header">
-            <span class="header-name">Наименование</span>
-            <span class="header-wholesale">Опт</span>
-            <span class="header-retail">Розница</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Морковь</span>
-            <span class="price-wholesale">200 ₽/кг</span>
-            <span class="price-retail">450 ₽/кг</span>
-        </div>
-        <!-- [Остальные элементы прайс-листа остаются такими же как в предыдущей версии, 
-        просто добавьте .price-header div перед первым .price-item в каждой категории] -->
-        <div class="price-item">
-            <span class="item-name">Капуста - острая</span>
-            <span class="price-wholesale">200 ₽/кг</span>
-            <span class="price-retail">450 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Капуста - шафран</span>
-            <span class="price-wholesale">200 ₽/кг</span>
-            <span class="price-retail">450 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Капуста - квашенная</span>
-            <span class="price-wholesale">200 ₽/кг</span>
-            <span class="price-retail">450 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Капуста - сладкий маринад</span>
-            <span class="price-wholesale">200 ₽/кг</span>
-            <span class="price-retail">450 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Кимчи (южнокор.)</span>
-            <span class="price-wholesale">550 ₽/кг</span>
-            <span class="price-retail">800 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Чимчи</span>
-            <span class="price-wholesale">450 ₽/кг</span>
-            <span class="price-retail">700 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Морская капуста</span>
-            <span class="price-wholesale">400 ₽/кг</span>
-            <span class="price-retail">600 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Витаминный салат</span>
-            <span class="price-wholesale">200 ₽/кг</span>
-            <span class="price-retail">450 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Цветная капуста</span>
-            <span class="price-wholesale">400 ₽/кг</span>
-            <span class="price-retail">600 ₽/кг</span>
-        </div>
+<div class="category">
+    <h2 class="category-title">Салаты</h2>
+    <div class="price-header">
+        <span class="header-name">Наименование</span>
+        <span class="header-wholesale">Опт</span>
+        <span class="header-retail">Розница</span>
     </div>
+    <div class="price-item">
+        <span class="item-name">Морковь</span>
+        <span class="price-wholesale">200 ₽/кг</span>
+        <span class="price-retail">450 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Капуста - острая</span>
+        <span class="price-wholesale">200 ₽/кг</span>
+        <span class="price-retail">450 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Капуста - шафран</span>
+        <span class="price-wholesale">200 ₽/кг</span>
+        <span class="price-retail">450 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Капуста - квашенная</span>
+        <span class="price-wholesale">200 ₽/кг</span>
+        <span class="price-retail">450 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Капуста - сладкий маринад</span>
+        <span class="price-wholesale">200 ₽/кг</span>
+        <span class="price-retail">450 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Кимчи (южнокор.)</span>
+        <span class="price-wholesale">550 ₽/кг</span>
+        <span class="price-retail">800 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Чимчи</span>
+        <span class="price-wholesale">450 ₽/кг</span>
+        <span class="price-retail">700 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Морская капуста</span>
+        <span class="price-wholesale">400 ₽/кг</span>
+        <span class="price-retail">600 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Витаминный салат</span>
+        <span class="price-wholesale">200 ₽/кг</span>
+        <span class="price-retail">450 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Цветная капуста</span>
+        <span class="price-wholesale">400 ₽/кг</span>
+        <span class="price-retail">600 ₽/кг</span>
+    </div>
+</div>
 
-    <div class="category">
-        <h2 class="category-title">Грибы</h2>
-        <div class="price-header">
-            <span class="header-name">Наименование</span>
-            <span class="header-wholesale">Опт</span>
-            <span class="header-retail">Розница</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Шампиньоны</span>
-            <span class="price-wholesale">700 ₽/кг</span>
-            <span class="price-retail">900 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Опята</span>
-            <span class="price-wholesale">700 ₽/кг</span>
-            <span class="price-retail">900 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Шиитаки</span>
-            <span class="price-wholesale">650 ₽/кг</span>
-            <span class="price-retail">900 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Коралловые грибы</span>
-            <span class="price-wholesale">650 ₽/кг</span>
-            <span class="price-retail">900 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Древесные грибы</span>
-            <span class="price-wholesale">650 ₽/кг</span>
-            <span class="price-retail">900 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Грузди</span>
-            <span class="price-wholesale">700 ₽/кг</span>
-            <span class="price-retail">900 ₽/кг</span>
-        </div>
+<div class="category">
+    <h2 class="category-title">Грибы</h2>
+    <div class="price-header">
+        <span class="header-name">Наименование</span>
+        <span class="header-wholesale">Опт</span>
+        <span class="header-retail">Розница</span>
     </div>
+    <div class="price-item">
+        <span class="item-name">Шампиньоны</span>
+        <span class="price-wholesale">700 ₽/кг</span>
+        <span class="price-retail">900 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Опята</span>
+        <span class="price-wholesale">700 ₽/кг</span>
+        <span class="price-retail">900 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Шиитаки</span>
+        <span class="price-wholesale">650 ₽/кг</span>
+        <span class="price-retail">900 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Коралловые грибы</span>
+        <span class="price-wholesale">650 ₽/кг</span>
+        <span class="price-retail">900 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Древесные грибы</span>
+        <span class="price-wholesale">650 ₽/кг</span>
+        <span class="price-retail">900 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Грузди</span>
+        <span class="price-wholesale">700 ₽/кг</span>
+        <span class="price-retail">900 ₽/кг</span>
+    </div>
+</div>
 
-    <div class="category">
-        <h2 class="category-title">Овощные закуски</h2>
-        <div class="price-header">
-            <span class="header-name">Наименование</span>
-            <span class="header-wholesale">Опт</span>
-            <span class="header-retail">Розница</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Баклажаны - хе</span>
-            <span class="price-wholesale">400 ₽/кг</span>
-            <span class="price-retail">600 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Кабачки - хе</span>
-            <span class="price-wholesale">400 ₽/кг</span>
-            <span class="price-retail">600 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Огурцы - хе</span>
-            <span class="price-wholesale">450 ₽/кг</span>
-            <span class="price-retail">650 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Проростки соевые (маш)</span>
-            <span class="price-wholesale">400 ₽/кг</span>
-            <span class="price-retail">600 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Фунчоза</span>
-            <span class="price-wholesale">400 ₽/кг</span>
-            <span class="price-retail">600 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Кукуруза (початки)</span>
-            <span class="price-wholesale">700 ₽/кг</span>
-            <span class="price-retail">900 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Папоротник</span>
-            <span class="price-wholesale">1000 ₽/кг</span>
-            <span class="price-retail">1200 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Спаржа белая</span>
-            <span class="price-wholesale">500 ₽/кг</span>
-            <span class="price-retail">800 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Спаржа со специями</span>
-            <span class="price-wholesale">500 ₽/кг</span>
-            <span class="price-retail">800 ₽/кг</span>
-        </div>
+<div class="category">
+    <h2 class="category-title">Овощные закуски</h2>
+    <div class="price-header">
+        <span class="header-name">Наименование</span>
+        <span class="header-wholesale">Опт</span>
+        <span class="header-retail">Розница</span>
     </div>
+    <div class="price-item">
+        <span class="item-name">Баклажаны - хе</span>
+        <span class="price-wholesale">400 ₽/кг</span>
+        <span class="price-retail">600 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Кабачки - хе</span>
+        <span class="price-wholesale">400 ₽/кг</span>
+        <span class="price-retail">600 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Огурцы - хе</span>
+        <span class="price-wholesale">450 ₽/кг</span>
+        <span class="price-retail">650 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Проростки соевые (маш)</span>
+        <span class="price-wholesale">400 ₽/кг</span>
+        <span class="price-retail">600 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Фунчоза</span>
+        <span class="price-wholesale">400 ₽/кг</span>
+        <span class="price-retail">600 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Кукуруза (початки)</span>
+        <span class="price-wholesale">700 ₽/кг</span>
+        <span class="price-retail">900 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Папоротник</span>
+        <span class="price-wholesale">800 ₽/кг</span>
+        <span class="price-retail">1000 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Спаржа белая</span>
+        <span class="price-wholesale">500 ₽/кг</span>
+        <span class="price-retail">800 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Спаржа со специями</span>
+        <span class="price-wholesale">500 ₽/кг</span>
+        <span class="price-retail">800 ₽/кг</span>
+    </div>
+</div>
 
-    <div class="category">
-        <h2 class="category-title">Морепродукты</h2>
-        <div class="price-header">
-            <span class="header-name">Наименование</span>
-            <span class="header-wholesale">Опт</span>
-            <span class="header-retail">Розница</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Мидии</span>
-            <span class="price-wholesale">1000 ₽/кг</span>
-            <span class="price-retail">1050 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Кальмары</span>
-            <span class="price-wholesale">1200 ₽/кг</span>
-            <span class="price-retail">1250 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Окунь</span>
-            <span class="price-wholesale">950 ₽/кг</span>
-            <span class="price-retail">1500 ₽/кг</span>
-        </div>
+<div class="category">
+    <h2 class="category-title">Морепродукты</h2>
+    <div class="price-header">
+        <span class="header-name">Наименование</span>
+        <span class="header-wholesale">Опт</span>
+        <span class="header-retail">Розница</span>
     </div>
+    <div class="price-item">
+        <span class="item-name">Мидии</span>
+        <span class="price-wholesale">950 ₽/кг</span>
+        <span class="price-retail">1200 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Окунь</span>
+        <span class="price-wholesale">950 ₽/кг</span>
+        <span class="price-retail">1500 ₽/кг</span>
+    </div>
+</div>
 
-    <div class="category">
-        <h2 class="category-title">Мясные</h2>
-        <div class="price-header">
-            <span class="header-name">Наименование</span>
-            <span class="header-wholesale">Опт</span>
-            <span class="header-retail">Розница</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Грудка-хе</span>
-            <span class="price-wholesale">700 ₽/кг</span>
-            <span class="price-retail">750 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Требуха-хе</span>
-            <span class="price-wholesale">700 ₽/кг</span>
-            <span class="price-retail">750 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Ушки-хе</span>
-            <span class="price-wholesale">650 ₽/кг</span>
-            <span class="price-retail">900 ₽/кг</span>
-        </div>
+<div class="category">
+    <h2 class="category-title">Мясные</h2>
+    <div class="price-header">
+        <span class="header-name">Наименование</span>
+        <span class="header-wholesale">Опт</span>
+        <span class="header-retail">Розница</span>
     </div>
+    <div class="price-item">
+        <span class="item-name">Грудка-хе</span>
+        <span class="price-wholesale">650 ₽/кг</span>
+        <span class="price-retail">900 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Требуха-хе</span>
+        <span class="price-wholesale">650 ₽/кг</span>
+        <span class="price-retail">900 ₽/кг</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Ушки-хе</span>
+        <span class="price-wholesale">650 ₽/кг</span>
+        <span class="price-retail">900 ₽/кг</span>
+    </div>
+</div>
 
-    <div class="category">
-        <h2 class="category-title">Соусы</h2>
-        <div class="price-header">
-            <span class="header-name">Наименование</span>
-            <span class="header-wholesale">Опт</span>
-            <span class="header-retail">Розница</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Соус с кинзой (300г)</span>
-            <span class="price-wholesale">100 ₽/кг</span>
-            <span class="price-retail">- ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Требуха-хе</span>
-            <span class="price-wholesale">700 ₽/кг</span>
-            <span class="price-retail">750 ₽/кг</span>
-        </div>
-        <div class="price-item">
-            <span class="item-name">Ушки-хе</span>
-            <span class="price-wholesale">650 ₽/кг</span>
-            <span class="price-retail">900 ₽/кг</span>
-        </div>
+<div class="category">
+    <h2 class="category-title">Соусы</h2>
+    <div class="price-header">
+        <span class="header-name">Наименование</span>
+        <span class="header-wholesale">Опт</span>
+        <span class="header-retail">Розница</span>
     </div>
+    <div class="price-item">
+        <span class="item-name">Соус с кинзой (300г)</span>
+        <span class="price-wholesale">100 ₽</span>
+        <span class="price-retail">150 ₽</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Аджика (300г)</span>
+        <span class="price-wholesale">100 ₽</span>
+        <span class="price-retail">150 ₽</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Тяй (соевая паста)</span>
+        <span class="price-wholesale">-</span>
+        <span class="price-retail">-</span>
+    </div>
+    <div class="price-item">
+        <span class="item-name">Соус из хрена</span>
+        <span class="price-wholesale">-</span>
+        <span class="price-retail">-</span>
+    </div>
+</div>
+
+<div class="contact">
+    <h3>Для заказа звоните:</h3>
+    <a href="tel:+79296175008" class="phone">+7 929 617-50-08</a>
+    <p>Ирэна</p>
+</div>
+</body>
+</html>
