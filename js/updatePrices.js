@@ -6,18 +6,25 @@ const RANGE = 'A2:D100'; // Диапазон ячеек с данными
 // Функция создания лоадера
 function showLoader() {
     const contentContainer = document.getElementById('price-content');
-    contentContainer.innerHTML = `
-        <div class="loader-container">
-            <div class="loader"></div>
-            <div class="loader-text">Загрузка данных...</div>
-        </div>
-    `;
+    if (contentContainer) {
+        contentContainer.innerHTML = `
+            <div class="loader-container">
+                <div class="loader"></div>
+                <div class="loader-text">Загрузка данных...</div>
+            </div>
+        `;
+    }
 }
 
 // Функция получения данных из Google Sheets
+// Функция получения данных из Google Sheets
 async function fetchPriceData() {
     try {
-        showLoader(); // Показываем лоадер перед запросом
+        // Показываем лоадер до начала загрузки
+        showLoader();
+
+        // Добавляем искусственную задержку в 1 секунду для демонстрации лоадера
+        // await new Promise(resolve => setTimeout(resolve, 1000));
 
         const response = await fetch(
             `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`
@@ -33,25 +40,31 @@ async function fetchPriceData() {
             throw new Error('Неверный формат данных');
         }
 
+        // Добавляем еще задержку после получения данных
+        // await new Promise(resolve => setTimeout(resolve, 500));
+
         return processData(data.values);
     } catch (error) {
         console.error('Ошибка при получении данных:', error);
-        document.getElementById('price-content').innerHTML = `
-            <div class="loader-container" style="color: #dc3545;">
-                <div style="text-align: center;">
-                    <div style="font-size: 1.2rem; margin-bottom: 10px;">Ошибка загрузки данных</div>
-                    <button onclick="location.reload()" 
-                            style="padding: 8px 16px; 
-                                   background-color: #4CAF50; 
-                                   color: white; 
-                                   border: none; 
-                                   border-radius: 4px; 
-                                   cursor: pointer;">
-                        Обновить страницу
-                    </button>
+        const contentContainer = document.getElementById('price-content');
+        if (contentContainer) {
+            contentContainer.innerHTML = `
+                <div class="loader-container" style="color: #dc3545;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 1.2rem; margin-bottom: 10px;">Ошибка загрузки данных</div>
+                        <button onclick="location.reload()" 
+                                style="padding: 8px 16px; 
+                                       background-color: #4CAF50; 
+                                       color: white; 
+                                       border: none; 
+                                       border-radius: 4px; 
+                                       cursor: pointer;">
+                            Обновить страницу
+                        </button>
+                    </div>
                 </div>
-            </div>
-        `;
+            `;
+        }
         return null;
     }
 }
@@ -131,6 +144,12 @@ function updatePriceList(categories) {
 
 // Загрузка данных при загрузке страницы
 document.addEventListener('DOMContentLoaded', async () => {
+    // Показываем лоадер сразу при загрузке страницы
+    showLoader();
+
+    // Небольшая задержка перед запросом данных
+    // await new Promise(resolve => setTimeout(resolve, 500));
+
     const data = await fetchPriceData();
     if (data) {
         updatePriceList(data);
