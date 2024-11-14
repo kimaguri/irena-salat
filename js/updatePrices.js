@@ -2,6 +2,7 @@
 const SHEET_ID = '1SvbaAkGzPWs-s6OmCCdwiBhXDoETJd0GS3pJGMdTXRc';
 const API_KEY = 'AIzaSyDxVeX5tNyuVqF_RBAHvA_B3TuwBE7HVOU';
 const RANGE = 'A2:D100'; // Диапазон ячеек с данными
+const MINIMUM_LOADING_TIME = 2000; // Минимальное время показа лоадера в миллисекундах
 
 // Функция создания лоадера
 function showLoader() {
@@ -10,22 +11,25 @@ function showLoader() {
         contentContainer.innerHTML = `
             <div class="loader-container">
                 <div class="loader"></div>
-                <div class="loader-text">Загрузка данных...</div>
+                <div class="loader-text">Загрузка актуальных цен...</div>
             </div>
         `;
     }
 }
 
-// Функция получения данных из Google Sheets
+// Функция задержки
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 // Функция получения данных из Google Sheets
 async function fetchPriceData() {
     try {
-        // Показываем лоадер до начала загрузки
+        // Показываем лоадер и запоминаем время начала загрузки
         showLoader();
+        const startTime = Date.now();
 
-        // Добавляем искусственную задержку в 1 секунду для демонстрации лоадера
-        // await new Promise(resolve => setTimeout(resolve, 1000));
-
+        // Запрашиваем данные
         const response = await fetch(
             `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`
         );
@@ -40,12 +44,20 @@ async function fetchPriceData() {
             throw new Error('Неверный формат данных');
         }
 
-        // Добавляем еще задержку после получения данных
-        // await new Promise(resolve => setTimeout(resolve, 500));
+        // Вычисляем, сколько времени прошло
+        const elapsedTime = Date.now() - startTime;
+
+        // Если прошло меньше минимального времени, добавляем задержку
+        if (elapsedTime < MINIMUM_LOADING_TIME) {
+            await delay(MINIMUM_LOADING_TIME - elapsedTime);
+        }
 
         return processData(data.values);
     } catch (error) {
         console.error('Ошибка при получении данных:', error);
+        // Добавляем задержку и для показа ошибки
+        await delay(MINIMUM_LOADING_TIME);
+
         const contentContainer = document.getElementById('price-content');
         if (contentContainer) {
             contentContainer.innerHTML = `
@@ -74,14 +86,13 @@ function processData(rows) {
     const categories = {};
 
     rows.forEach(row => {
-        // Проверяем, что строка содержит все необходимые данные
-        if (!row[0] || !row[1]) return; // Пропускаем строки без категории или названия
+        if (!row[0]) return;
 
-        const category = row[0].trim(); // Убираем лишние пробелы
+        const category = row[0];
         const item = {
-            name: row[1].trim(),
-            wholesale: row[2] ? row[2].trim() : '-',
-            retail: row[3] ? row[3].trim() : '-'
+            name: row[1],
+            wholesale: row[2] || '-',
+            retail: row[3] || '-'
         };
 
         if (!categories[category]) {
@@ -95,8 +106,6 @@ function processData(rows) {
 
 // Создание HTML для категории
 function createCategoryHTML(categoryName, items) {
-    if (!items.length) return ''; // Не создаем пустые категории
-
     return `
     <div class="category">
         <h2 class="category-title">${categoryName}</h2>
@@ -119,21 +128,7 @@ function createCategoryHTML(categoryName, items) {
 // Обновление контента на странице
 function updatePriceList(categories) {
     const contentContainer = document.getElementById('price-content');
-    if (!contentContainer) {
-        console.error('Контейнер для цен не найден');
-        return;
-    }
-
-    if (Object.keys(categories).length === 0) {
-        contentContainer.innerHTML = `
-            <div class="loader-container">
-                <div style="text-align: center; color: #666;">
-                    Нет данных для отображения
-                </div>
-            </div>
-        `;
-        return;
-    }
+    if (!contentContainer) return;
 
     const categoriesHTML = Object.entries(categories)
         .map(([category, items]) => createCategoryHTML(category, items))
@@ -144,12 +139,6 @@ function updatePriceList(categories) {
 
 // Загрузка данных при загрузке страницы
 document.addEventListener('DOMContentLoaded', async () => {
-    // Показываем лоадер сразу при загрузке страницы
-    showLoader();
-
-    // Небольшая задержка перед запросом данных
-    // await new Promise(resolve => setTimeout(resolve, 500));
-
     const data = await fetchPriceData();
     if (data) {
         updatePriceList(data);
