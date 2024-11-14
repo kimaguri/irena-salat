@@ -33,6 +33,42 @@ body {
     margin: 5px 0;
 }
 
+.contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+/* Цвет иконки в шапке (белый) */
+.header .whatsapp-link {
+    color: white;
+}
+
+/* Цвет иконки в нижнем блоке контактов (зеленый) */
+.contact .whatsapp-link {
+    color: #25D366;
+}
+
+.whatsapp-link:hover {
+    opacity: 0.8;
+}
+
+/* Увеличиваем размер иконок на больших экранах */
+@media (min-width: 768px) {
+    .whatsapp-link {
+        font-size: 28px;
+    }
+}
+
 @media (min-width: 768px) {
     body {
         padding: 20px;
